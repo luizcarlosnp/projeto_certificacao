@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_erp__customer
+    description: "Tabela de clientes, contendo informações relacionadas a identificação, loja, território e modificações."
+    columns:
+      - name: customerid
+        description: "Identificador único do cliente."
+      - name: personid
+        description: "Identificador da pessoa associada ao cliente."
+      - name: storeid
+        description: "Identificador da loja associada ao cliente."
+      - name: territoryid
+        description: "Identificador do território ao qual o cliente pertence."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."

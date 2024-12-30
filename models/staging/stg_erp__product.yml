@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_erp__product
+    description: "Tabela de produtos, contendo informações detalhadas sobre identificação, características e preços."
+    columns:
+      - name: name
+        description: "Nome do produto."
+      - name: productid
+        description: "Identificador único do produto."
+      - name: productnumber
+        description: "Número de identificação do produto."
+      - name: makeflag
+        description: "Indicador se o produto é fabricado internamente (True/False)."
+      - name: finishedgoodsflag
+        description: "Indicador se o produto é acabado ou semi-acabado (True/False)."
+      - name: color
+        description: "Cor do produto."
+      - name: safetystocklevel
+        description: "Nível mínimo de estoque de segurança para o produto."
+      - name: reorderpoint
+        description: "Ponto de reabastecimento do produto, abaixo do qual o estoque deve ser reabastecido."
+      - name: standardcost
+        description: "Custo padrão do produto."
+      - name: listprice
+        description: "Preço de venda do produto."
+      - name: size
+        description: "Tamanho do produto."
+      - name: sizeunitmeasurecode
+        description: "Código da unidade de medida do tamanho do produto."
+      - name: weightunitmeasurecode
+        description: "Código da unidade de medida do peso do produto."
+      - name: weight
+        description: "Peso do produto."
+      - name: daystomanufacture
+        description: "Número de dias necessários para fabricar o produto."
+      - name: productline
+        description: "Linha de produto à qual o item pertence."
+      - name: class
+        description: "Classe do produto (ex: A, B, C)."
+      - name: style
+        description: "Estilo ou modelo do produto."
+      - name: productsubcategoryid
+        description: "Identificador da subcategoria do produto."
+      - name: productmodelid
+        description: "Identificador do modelo do produto."
+      - name: sellstartdate
+        description: "Data de início das vendas do produto."
+      - name: sellenddate
+        description: "Data de término das vendas do produto."
+      - name: discontinueddate
+        description: "Data de descontinuação do produto."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."

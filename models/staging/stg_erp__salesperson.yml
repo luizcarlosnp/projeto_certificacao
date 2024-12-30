@@ -1,0 +1,26 @@
+version: 2
+
+models:
+  - name: stg_erp__salesperson
+    description: "Tabela de vendedores, contendo informações sobre a entidade de negócios, metas de vendas, comissões e desempenho."
+    columns:
+      - name: name
+        description: "Nome completo do vendedor."
+      - name: businessentityid
+        description: "Identificador único da entidade de negócios associada ao vendedor."
+      - name: territoryid
+        description: "Identificador do território associado ao vendedor."
+      - name: salesquota
+        description: "Quota de vendas atribuída ao vendedor."
+      - name: bonus
+        description: "Bônus recebido pelo vendedor com base em seu desempenho."
+      - name: commissionpct
+        description: "Percentual de comissão do vendedor sobre as vendas realizadas."
+      - name: salesytd
+        description: "Total de vendas realizadas pelo vendedor no ano até a data atual."
+      - name: saleslastyear
+        description: "Total de vendas realizadas pelo vendedor no ano anterior."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."

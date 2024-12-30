@@ -1,0 +1,28 @@
+version: 2
+
+models:
+  - name: stg_erp__salesorderdetail
+    description: "Tabela de detalhes de pedidos de venda, contendo informações sobre os produtos e preços associados a cada pedido."
+    columns:
+      - name: name
+        description: "Nome do detalhe do pedido de venda."
+      - name: salesorderid
+        description: "Identificador único do pedido de venda."
+      - name: salesorderdetailid
+        description: "Identificador único do detalhe do pedido de venda."
+      - name: carriertrackingnumber
+        description: "Número de rastreamento do transportador associado ao pedido."
+      - name: orderqty
+        description: "Quantidade de unidades do produto no pedido."
+      - name: productid
+        description: "Identificador do produto associado ao pedido."
+      - name: specialofferid
+        description: "Identificador da oferta especial aplicada ao pedido."
+      - name: unitprice
+        description: "Preço unitário do produto no pedido."
+      - name: unitpricediscount
+        description: "Desconto aplicado ao preço unitário do produto."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."

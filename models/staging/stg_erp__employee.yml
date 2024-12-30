@@ -1,0 +1,38 @@
+version: 2
+
+models:
+  - name: stg_erp__employee
+    description: "Tabela de empregados, contendo informações detalhadas sobre identidade, cargo, status e benefícios."
+    columns:
+      - name: name
+        description: "Nome completo do empregado."
+      - name: businessentityid
+        description: "Identificador único da entidade de negócios associada ao empregado."
+      - name: nationalidnumber
+        description: "Número de identificação nacional do empregado."
+      - name: loginid
+        description: "Identificador de login do empregado."
+      - name: jobtitle
+        description: "Cargo ou título do empregado na organização."
+      - name: birthdate
+        description: "Data de nascimento do empregado."
+      - name: maritalstatus
+        description: "Estado civil do empregado."
+      - name: gender
+        description: "Gênero do empregado."
+      - name: hiredate
+        description: "Data de contratação do empregado."
+      - name: salariedflag
+        description: "Indicador se o empregado é assalariado (True/False)."
+      - name: vacationhours
+        description: "Número de horas de férias acumuladas pelo empregado."
+      - name: sickleavehours
+        description: "Número de horas de licença médica acumuladas pelo empregado."
+      - name: currentflag
+        description: "Indicador se o empregado está ativo na empresa (True/False)."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."
+      - name: organizationnode
+        description: "Identificador da organização ou departamento ao qual o empregado pertence."

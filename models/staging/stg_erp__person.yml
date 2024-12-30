@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: stg_erp__person
+    description: "Tabela de pessoas, contendo informações sobre identidade, tipo de pessoa, e dados de contato."
+    columns:
+      - name: name
+        description: "Nome completo da pessoa."
+      - name: businessentityid
+        description: "Identificador único da entidade de negócios associada à pessoa."
+      - name: persontype
+        description: "Tipo de pessoa (ex: 'Física' ou 'Jurídica')."
+      - name: namestyle
+        description: "Estilo de nome (ex: formal ou informal)."
+      - name: title
+        description: "Título da pessoa (ex: Dr., Sr., Sra.)."
+      - name: firstname
+        description: "Primeiro nome da pessoa."
+      - name: middlename
+        description: "Nome do meio da pessoa (se houver)."
+      - name: lastname
+        description: "Sobrenome da pessoa."
+      - name: suffix
+        description: "Sufixo do nome da pessoa (ex: Jr., Sr., III)."
+      - name: emailpromotion
+        description: "Indicador de consentimento para promoções por e-mail (True/False)."
+      - name: additionalcontactinfo
+        description: "Informações adicionais de contato da pessoa."
+      - name: demographics
+        description: "Informações demográficas da pessoa (ex: idade, gênero, etc.)."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."

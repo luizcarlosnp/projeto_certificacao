@@ -1,0 +1,22 @@
+version: 2
+
+models:
+  - name: stg_erp__stateprovince
+    description: "Tabela de estados ou províncias, contendo informações sobre a localização geográfica e associações com outros registros."
+    columns:
+      - name: stateprovinceid
+        description: "Identificador único do estado ou província."
+      - name: stateprovincecode
+        description: "Código do estado ou província."
+      - name: countryregioncode
+        description: "Código da região ou país ao qual o estado ou província pertence."
+      - name: isonlystateprovinceflag
+        description: "Indicador se é o único estado ou província na região (True/False)."
+      - name: name
+        description: "Nome do estado ou província."
+      - name: territoryid
+        description: "Identificador do território associado ao estado ou província."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."

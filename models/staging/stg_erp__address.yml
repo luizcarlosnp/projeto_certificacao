@@ -1,0 +1,24 @@
+version: 2
+
+models:
+  - name: stg_erp__address
+    description: "Tabela de endereço do ERP contendo informações detalhadas sobre localização e modificações."
+    columns:
+      - name: addressid
+        description: "Identificador único do endereço."
+      - name: addressline1
+        description: "Primeira linha do endereço."
+      - name: addressline2
+        description: "Segunda linha do endereço (opcional)."
+      - name: city
+        description: "Cidade do endereço."
+      - name: stateprovinceid
+        description: "Identificador do estado ou província."
+      - name: postalcode
+        description: "Código postal do endereço."
+      - name: spatiallocation
+        description: "Informação de localização espacial (geográfica)."
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."

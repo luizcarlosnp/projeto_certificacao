@@ -1,0 +1,19 @@
+version: 2
+
+sources:
+  - name: adventure_works
+    description: Sistema de dados de venda da Adventure Works.
+    database: FEA24_9
+    schema: raw_adventure_works   
+    tables:
+      - name: customer
+      - name: person
+      - name: salesreason
+      - name: salesperson
+      - name: employee
+      - name: stateprovince
+      - name: address
+      - name: countryregion
+      - name: salesorderheader
+      - name: salesorderdetail
+      - name: product

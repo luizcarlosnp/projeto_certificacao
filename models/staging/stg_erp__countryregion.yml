@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_erp__countryregion
+    description: "Tabela de regiões e países, contendo códigos e informações associadas."
+    columns:
+      - name: countryregioncode
+        description: "Código único que identifica a região ou país."
+      - name: name
+        description: "Nome da região ou país."
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro."
