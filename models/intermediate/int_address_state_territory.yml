@@ -1,0 +1,72 @@
+version: 2
+
+models:
+  - name: int_address_state_territory
+    description: "Modelo que combina dados de endereço, estado/província e território de vendas."
+    columns:
+      - name: address_id
+        description: "Identificador único do endereço."
+        tests:
+          - unique
+          - not_null
+      - name: address_line1
+        description: "Primeira linha do endereço."
+        tests:
+          - not_null
+      - name: address_line2
+        description: "Segunda linha do endereço (opcional)."
+      - name: city_name
+        description: "Nome da cidade."
+        tests:
+          - not_null
+      - name: postal_code
+        description: "Código postal do endereço."
+        tests:
+          - not_null
+      - name: location
+        description: "Informação geográfica da localização (spatial)."
+      - name: state_province_code
+        description: "Código do estado ou província."
+        tests:
+          - not_null
+      - name: state_province_name
+        description: "Nome do estado ou província."
+        tests:
+          - not_null
+      - name: territory_name
+        description: "Nome do território de vendas."
+        tests:
+          - not_null
+      - name: sales_ytd
+        description: "Valor total de vendas até o momento no ano (Year-To-Date)."
+        tests:
+          - not_null
+      - name: sales_last_year
+        description: "Valor total de vendas do território de vendas no ano passado."
+        tests:
+          - not_null
+      - name: cost_ytd
+        description: "Custo total até o momento no ano (Year-To-Date) para o território de vendas."
+        tests:
+          - not_null
+      - name: cost_last_year
+        description: "Custo total do território de vendas no ano passado."
+        tests:
+          - not_null
+
+tests:
+  - name: int_address_state_territory
+    description: "Modelo que verifica se as chaves de junção estão corretas."
+    tests:
+      - relationship:
+          to: ref('stg_erp__address')
+          field: address_id
+          model_field: address_id
+      - relationship:
+          to: ref('stg_erp__stateprovince')
+          field: state_province_id
+          model_field: state_province_id
+      - relationship:
+          to: ref('stg_erp__salesterritory')
+          field: sales_territory_id
+          model_field: sales_territory_id

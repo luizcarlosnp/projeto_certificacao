@@ -1,0 +1,126 @@
+version: 2
+
+models:
+  - name: int_sales
+    description: "Modelo contendo as métricas relacionadas aos pedidos de vendas, com informações sobre itens, valores e status dos pedidos."
+    columns:
+      - name: pedido_id
+        description: "Identificador único do pedido de vendas."
+        tests:
+          - unique
+          - not_null
+      - name: data_pedido
+        description: "Data do pedido de vendas."
+        tests:
+          - not_null
+      - name: cliente_id
+        description: "Identificador único do cliente associado ao pedido."
+        tests:
+          - not_null
+      - name: territorio_id
+        description: "Identificador do território associado ao pedido."
+      - name: endereco_cobranca_id
+        description: "Identificador do endereço de cobrança."
+        tests:
+          - not_null
+      - name: endereco_entrega_id
+        description: "Identificador do endereço de entrega."
+        tests:
+          - not_null
+      - name: metodo_envio_id
+        description: "Identificador do método de envio utilizado para o pedido."
+        tests:
+          - not_null
+      - name: valor_subtotal
+        description: "Valor total do pedido antes de impostos e frete."
+        tests:
+          - not_null
+      - name: valor_imposto
+        description: "Valor total de impostos aplicados ao pedido."
+        tests:
+          - not_null
+      - name: valor_frete
+        description: "Valor do frete associado ao pedido."
+        tests:
+          - not_null
+      - name: comentario
+        description: "Comentário ou observações relacionadas ao pedido."
+      - name: status
+        description: "Status do pedido de vendas."
+        tests:
+          - not_null
+      - name: detalhe_pedido_id
+        description: "Identificador único do detalhe do pedido."
+        tests:
+          - not_null
+      - name: produto_id
+        description: "Identificador do produto associado ao pedido."
+        tests:
+          - not_null
+      - name: oferta_especial_id
+        description: "Identificador da oferta especial associada ao pedido."
+      - name: quantidade_pedido
+        description: "Quantidade de itens do produto no pedido."
+        tests:
+          - not_null
+      - name: preco_unitario
+        description: "Preço unitário do produto no pedido."
+        tests:
+          - not_null
+      - name: desconto_unitario
+        description: "Desconto unitário aplicado ao produto no pedido."
+      - name: valor_total_negociado
+        description: "Valor total negociado (quantidade * preço unitário)."
+        tests:
+          - not_null
+      - name: faturamento_bruto
+        description: "Faturamento bruto (quantidade * preço unitário)."
+        tests:
+          - not_null
+      - name: total_desconto
+        description: "Valor total de descontos aplicados (quantidade * desconto unitário)."
+      - name: cidade_entrega
+        description: "Cidade de entrega do pedido."
+      - name: estado_provincia_id
+        description: "Identificador do estado ou província da entrega."
+      - name: codigo_postal_entrega
+        description: "Código postal do endereço de entrega."
+      - name: tipo_razao
+        description: "Tipo da razão de venda associada ao pedido."
+
+tests:
+  - name: int_sales
+    description: "Modelo que verifica a integridade dos pedidos de vendas, garantindo que os campos críticos não contenham valores nulos."
+    tests:
+      - not_null:
+          column_name: pedido_id
+      - not_null:
+          column_name: data_pedido
+      - not_null:
+          column_name: cliente_id
+      - not_null:
+          column_name: endereco_cobranca_id
+      - not_null:
+          column_name: endereco_entrega_id
+      - not_null:
+          column_name: metodo_envio_id
+      - not_null:
+          column_name: valor_subtotal
+      - not_null:
+          column_name: valor_imposto
+      - not_null:
+          column_name: valor_frete
+      - not_null:
+          column_name: status
+      - not_null:
+          column_name: detalhe_pedido_id
+      - not_null:
+          column_name: produto_id
+      - not_null:
+          column_name: quantidade_pedido
+      - not_null:
+          column_name: preco_unitario
+      - not_null:
+          column_name: valor_total_negociado
+      - not_null:
+          column_name: faturamento_bruto

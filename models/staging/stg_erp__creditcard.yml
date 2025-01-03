@@ -1,0 +1,32 @@
+version: 2
+
+models:
+  - name: stg_erp__creditcard
+    description: "Tabela de staging contendo informações detalhadas sobre os cartões de crédito, incluindo o tipo, número e datas de validade."
+    columns:
+      - name: creditcardid
+        description: "Identificador único do cartão de crédito."
+        tests:
+          - unique
+          - not_null
+      - name: cardtype
+        description: "Tipo do cartão de crédito (por exemplo, Visa, MasterCard, etc.)."
+        tests:
+          - not_null
+      - name: cardnumber
+        description: "Número do cartão de crédito."
+        tests:
+          - not_null
+          - unique
+      - name: expmonth
+        description: "Mês de expiração do cartão de crédito (formato MM)."
+        tests:
+          - not_null
+      - name: expyear
+        description: "Ano de expiração do cartão de crédito (formato AAAA)."
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro do cartão de crédito."
+        tests:
+          - not_null

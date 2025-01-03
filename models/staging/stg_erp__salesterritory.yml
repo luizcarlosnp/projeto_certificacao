@@ -1,0 +1,48 @@
+version: 2
+
+models:
+  - name: stg_erp__salesterritory
+    description: "Tabela de staging que contém informações sobre os territórios de vendas, incluindo dados de desempenho e localização geográfica."
+    columns:
+      - name: territoryid
+        description: "Identificador único do território de vendas."
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Nome do território de vendas."
+        tests:
+          - not_null
+      - name: countryregioncode
+        description: "Código da região ou país associado ao território de vendas."
+        tests:
+          - not_null
+      - name: group
+        description: "Grupo ou categoria do território de vendas (por exemplo, Norte, Sul, etc.)."
+        tests:
+          - not_null
+      - name: salesytd
+        description: "Valor total de vendas até o momento no ano (Year-To-Date)."
+        tests:
+          - not_null
+      - name: saleslastyear
+        description: "Valor total de vendas do território de vendas no ano passado."
+        tests:
+          - not_null
+      - name: costytd
+        description: "Custo total até o momento no ano (Year-To-Date) relacionado ao território de vendas."
+        tests:
+          - not_null
+      - name: costlastyear
+        description: "Custo total do território de vendas no ano passado."
+        tests:
+          - not_null
+      - name: rowguid
+        description: "Identificador global único para controle de registro."
+        tests:
+          - unique
+          - not_null
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro do território de vendas."
+        tests:
+          - not_null

@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with 
 header as (
     select * from {{ ref('stg_erp__salesorderheader') }}
@@ -15,6 +17,12 @@ addresses as (
     from
         {{ ref('stg_erp__address') }}
 ),
+salesorderheadersalesreason as (
+    select * from {{ ref('stg_erp__salesorderheadersalesreason') }}
+),
+salesreason as (
+    select * from {{ ref('stg_erp__salesreason') }}    
+),
 joined as (
     select
         header.salesorderid as pedido_id,
@@ -29,17 +37,16 @@ joined as (
         header.freight as valor_frete,
         header.comment as comentario,
         header.status,
-        header.modifieddate as data_modificacao_cabecalho,
         details.salesorderdetailid as detalhe_pedido_id,
         details.productid as produto_id,
         details.specialofferid as oferta_especial_id,
         details.orderqty as quantidade_pedido,
         details.unitprice as preco_unitario,
         details.unitpricediscount as desconto_unitario,
-        details.modifieddate as data_modificacao_detalhe,
         addresses.city as cidade_entrega,
         addresses.stateprovinceid as estado_provincia_id,
-        addresses.postalcode as codigo_postal_entrega
+        addresses.postalcode as codigo_postal_entrega,
+        salesreason.reasontype as tipo_razao
     from
         header
     inner join
@@ -50,6 +57,14 @@ joined as (
         addresses
     on
         header.shiptoaddressid = addresses.addressid
+    left join 
+        salesorderheadersalesreason
+    on
+        header.salesorderid = salesorderheadersalesreason.salesorderid
+    left join
+        salesreason
+    on
+        salesorderheadersalesreason.salesreasonid = salesreason.salesreasonid
 ),
 metrics as (
     select 
@@ -67,7 +82,6 @@ metrics as (
         valor_frete,
         comentario,
         status,
-        data_modificacao_cabecalho,
         detalhe_pedido_id,
         produto_id,
         oferta_especial_id,
@@ -77,10 +91,10 @@ metrics as (
         quantidade_pedido * preco_unitario as valor_total_negociado,
         quantidade_pedido * preco_unitario as faturamento_bruto,
         quantidade_pedido * desconto_unitario as total_desconto,
-        data_modificacao_detalhe,
         cidade_entrega,
         estado_provincia_id,
-        codigo_postal_entrega
+        codigo_postal_entrega,
+        tipo_razao
     from joined
 )
 select * from metrics

@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with
     product as (
         select *

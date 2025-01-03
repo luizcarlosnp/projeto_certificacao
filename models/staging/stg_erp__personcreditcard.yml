@@ -1,0 +1,18 @@
+version: 2
+
+models:
+  - name: stg_erp__personcreditcard
+    description: "Tabela de staging que relaciona os cartões de crédito com as entidades de negócios (pessoas) no sistema."
+    columns:
+      - name: businessentityid
+        description: "Identificador único da entidade de negócios (por exemplo, uma pessoa ou empresa)."
+        tests:
+          - not_null
+      - name: creditcardid
+        description: "Identificador do cartão de crédito relacionado à entidade de negócios."
+        tests:
+          - not_null
+      - name: modifieddate
+        description: "Data e hora da última modificação no registro do cartão de crédito da entidade de negócios."
+        tests:
+          - not_null

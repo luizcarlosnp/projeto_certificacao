@@ -1,0 +1,14 @@
+version: 2
+
+models:
+  - name: stg_erp__salesorderheadersalesreason
+    description: >-
+      Tabela que relaciona os cabeçalhos de pedidos de vendas com as razões associadas. 
+      Contém informações sobre o ID do pedido, ID da razão e a data de modificação.
+    columns:
+      - name: SALESORDERID
+        description: Identificador único do pedido de vendas.
+      - name: SALESREASONID
+        description: Identificador único da razão de vendas associada ao pedido.
+      - name: MODIFIEDDATE
+        description: Data e hora em que o registro foi modificado pela última vez.

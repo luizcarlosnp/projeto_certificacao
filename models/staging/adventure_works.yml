@@ -17,3 +17,7 @@ sources:
       - name: salesorderheader
       - name: salesorderdetail
       - name: product
+      - name: salesorderheadersalesreason
+      - name: salesterritory
+      - name: creditcard
+      - name: personcreditcard

@@ -1,0 +1,42 @@
+version: 2
+
+models:
+  - name: int_cards
+    description: "Modelo que combina informações de cartões de crédito e os respectivos dados de entidades relacionadas."
+    columns:
+      - name: credit_card_id
+        description: "Identificador único do cartão de crédito."
+        tests:
+          - unique
+          - not_null
+      - name: card_type
+        description: "Tipo do cartão de crédito (ex: Visa, MasterCard)."
+        tests:
+          - not_null
+      - name: expiration_month
+        description: "Mês de expiração do cartão de crédito."
+        tests:
+          - not_null
+      - name: expiration_year
+        description: "Ano de expiração do cartão de crédito."
+        tests:
+          - not_null
+      - name: business_entity_id
+        description: "Identificador da entidade de negócios associada ao cartão de crédito."
+        tests:
+          - not_null
+
+tests:
+  - name: int_cards
+    description: "Modelo que verifica se as chaves de junção estão corretas."
+    tests:
+      - relationship:
+          to: ref('stg_erp__creditcard')
+          field: creditcardid
+          model_field: credit_card_id
+      - relationship:
+          to: ref('stg_erp__personcreditcard')
+          field: creditcardid
+          model_field: credit_card_id
+      - not_null:
+          column_name: credit_card_id

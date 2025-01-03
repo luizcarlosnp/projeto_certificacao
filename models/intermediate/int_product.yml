@@ -1,0 +1,86 @@
+version: 2
+
+models:
+  - name: int_product
+    description: "Modelo que contém informações detalhadas sobre produtos, incluindo dados de estoque, preço e características do produto."
+    columns:
+      - name: produto_id
+        description: "Identificador único do produto."
+        tests:
+          - unique
+          - not_null
+      - name: nome_produto
+        description: "Nome do produto."
+        tests:
+          - not_null
+      - name: numero_produto
+        description: "Número único associado ao produto."
+        tests:
+          - not_null
+      - name: fabricado_internamente
+        description: "Flag indicando se o produto é fabricado internamente."
+      - name: produto_acabado
+        description: "Flag indicando se o produto é acabado."
+      - name: cor_produto
+        description: "Cor do produto."
+      - name: estoque_seguranca
+        description: "Nível de estoque de segurança do produto."
+        tests:
+          - not_null
+      - name: ponto_reabastecimento
+        description: "Ponto de reabastecimento do produto."
+        tests:
+          - not_null
+      - name: custo_padrao
+        description: "Custo padrão do produto."
+        tests:
+          - not_null
+      - name: preco_venda
+        description: "Preço de venda do produto."
+        tests:
+          - not_null
+      - name: tamanho_produto
+        description: "Tamanho do produto."
+      - name: unidade_medida_tamanho
+        description: "Unidade de medida do tamanho do produto."
+      - name: unidade_medida_peso
+        description: "Unidade de medida do peso do produto."
+      - name: peso_produto
+        description: "Peso do produto."
+      - name: dias_fabricacao
+        description: "Número de dias necessários para fabricar o produto."
+      - name: linha_produto
+        description: "Linha do produto."
+      - name: classe_produto
+        description: "Classe do produto."
+      - name: estilo_produto
+        description: "Estilo do produto."
+      - name: id_subcategoria_produto
+        description: "Identificador da subcategoria do produto."
+      - name: id_modelo_produto
+        description: "Identificador do modelo do produto."
+      - name: data_inicio_venda
+        description: "Data de início da venda do produto."
+      - name: data_fim_venda
+        description: "Data de término da venda do produto."
+      - name: data_descontinuacao
+        description: "Data de descontinuação do produto."
+      - name: guid
+        description: "Identificador global único do produto."
+        tests:
+          - not_null
+
+tests:
+  - name: int_product
+    description: "Modelo que verifica se as chaves de junção estão corretas."
+    tests:
+      - not_null:
+          column_name: produto_id
+      - not_null:
+          column_name: nome_produto
+      - not_null:
+          column_name: numero_produto
+      - not_null:
+          column_name: custo_padrao
+      - not_null:
+          column_name: preco_venda
