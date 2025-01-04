@@ -1,3 +1,5 @@
+{{ config(materialized='table') }}
+
 with address as (
     select
         addressid as address_id,
