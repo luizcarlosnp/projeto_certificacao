@@ -28,7 +28,7 @@ with produtos as (
         discontinueddate as data_descontinuacao,
         rowguid as guid
 
-    from stg_erp__product
+    from {{ ref('stg_erp__product') }}
 )
 -- Criação da tabela intermediaria de produtos
 select

@@ -1,23 +1,37 @@
-version: 2
-
 sources:
   - name: adventure_works
-    description: Sistema de dados de venda da Adventure Works.
+    description: Sistema de dados de venda da Adventure Works. Contém dados relacionados a clientes, vendas, produtos e geografia.
     database: FEA24_9
-    schema: raw_adventure_works   
+    schema: raw_adventure_works
+    schema_description: Este schema contém tabelas extraídas do sistema principal da Adventure Works, representando dados brutos não processados.
     tables:
       - name: customer
+        description: Contém informações sobre os clientes, incluindo detalhes pessoais e comerciais.
       - name: person
+        description: Armazena dados básicos de pessoas, como nome, sobrenome e informações de contato.
       - name: salesreason
+        description: Define os motivos pelos quais uma venda foi realizada, utilizado em análises de desempenho.
       - name: salesperson
+        description: Detalha os funcionários responsáveis pelas vendas, incluindo metas e resultados alcançados.
       - name: employee
+        description: Contém informações gerais sobre os funcionários, incluindo detalhes de cargo e departamento.
       - name: stateprovince
+        description: Representa estados ou províncias, vinculados a endereços e regiões de vendas.
       - name: address
+        description: Registra os endereços físicos relacionados a clientes e funcionários.
       - name: countryregion
+        description: Lista os países e regiões, utilizados para análises de vendas e localização.
       - name: salesorderheader
+        description: Contém informações agregadas de pedidos de vendas, como datas e totais de pedidos.
       - name: salesorderdetail
+        description: Detalha os itens individuais dentro de um pedido de vendas, incluindo quantidades e preços.
       - name: product
+        description: Lista todos os produtos disponíveis para venda, incluindo especificações e preços.
       - name: salesorderheadersalesreason
+        description: Relaciona pedidos de vendas com os motivos associados às vendas.
       - name: salesterritory
+        description: Define territórios de vendas, incluindo informações geográficas e metas regionais.
       - name: creditcard
+        description: Contém detalhes dos cartões de crédito utilizados pelos clientes para pagamentos.
       - name: personcreditcard
+        description: Faz a associação entre pessoas e os cartões de crédito registrados.
