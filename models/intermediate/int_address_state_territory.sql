@@ -2,63 +2,64 @@
 
 with address as (
     select
-        addressid as address_id,
-        addressline1 as address_line1,
-        addressline2 as address_line2,
-        city as city_name,
-        stateprovinceid as state_province_id,
-        postalcode as postal_code,
-        spatiallocation as location,
-        rowguid as address_rowguid
+        addressid as endereco_id,
+        addressline1 as linha_endereco1,
+        addressline2 as linha_endereco2,
+        city as nome_cidade,
+        stateprovinceid as estado_provincia_id,
+        postalcode as codigo_postal,
+        spatiallocation as localizacao,
+        rowguid as endereco_rowguid
     from {{ ref('stg_erp__address') }}
 ),
 stateprovince as (
     select
-        stateprovinceid as state_province_id,
-        stateprovincecode as state_province_code,
-        countryregioncode as country_region_code,
-        isonlystateprovinceflag as is_only_state_province,
-        name as state_province_name,
-        territoryid as sales_territory_id,
-        rowguid as state_province_rowguid
+        stateprovinceid as estado_provincia_id,
+        stateprovincecode as codigo_estado_provincia,
+        countryregioncode as codigo_pais_regiao,
+        isonlystateprovinceflag as flag_apenas_estado_provincia,
+        name as nome_estado_provincia,
+        territoryid as territorio_id,
+        rowguid as estado_provincia_rowguid
     from {{ ref('stg_erp__stateprovince') }}
 ),
 salesterritory as (
     select
-        territoryid as sales_territory_id,
-        name as territory_name,
-        countryregioncode as country_region_code,
-        salesytd as sales_ytd,
-        saleslastyear as sales_last_year,
-        costytd as cost_ytd,
-        costlastyear as cost_last_year,
-        rowguid as territory_rowguid
+        territoryid as territorio_id,
+        name as nome_territorio,
+        countryregioncode as codigo_pais_regiao,
+        salesytd as vendas_ano_atual,
+        saleslastyear as vendas_ano_anterior,
+        costytd as custo_ano_atual,
+        costlastyear as custo_ano_anterior,
+        rowguid as territorio_rowguid
     from {{ ref('stg_erp__salesterritory') }}
 ),
 joined as (
     select
-        address.address_id,
-        address.address_line1,
-        address.address_line2,
-        address.city_name,
-        address.postal_code,
-        address.location,
-        stateprovince.state_province_code,
-        stateprovince.state_province_name,
-        salesterritory.territory_name,
-        salesterritory.sales_ytd,
-        salesterritory.sales_last_year,
-        salesterritory.cost_ytd,
-        salesterritory.cost_last_year
+        address.endereco_id,
+        address.linha_endereco1,
+        address.linha_endereco2,
+        address.nome_cidade,
+        address.codigo_postal,
+        address.localizacao,
+        stateprovince.codigo_estado_provincia,
+        stateprovince.nome_estado_provincia,
+        salesterritory.nome_territorio,
+        salesterritory.territorio_id,
+        salesterritory.vendas_ano_atual,
+        salesterritory.vendas_ano_anterior,
+        salesterritory.custo_ano_atual,
+        salesterritory.custo_ano_anterior
     from address
     inner join 
         stateprovince
     on 
-        address.state_province_id = stateprovince.state_province_id
+        address.estado_provincia_id = stateprovince.estado_provincia_id
     inner join 
         salesterritory
     on 
-        stateprovince.sales_territory_id = salesterritory.sales_territory_id
+        stateprovince.territorio_id = salesterritory.territorio_id
 )
 
 select * from joined

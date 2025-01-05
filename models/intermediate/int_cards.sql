@@ -4,16 +4,16 @@ with
     creditcard as (
         select * from {{ ref('stg_erp__creditcard') }}
     ), 
-	personcreditcard as (
+    personcreditcard as (
         select * from {{ ref('stg_erp__personcreditcard') }}
     ), 
-	joined as (
+    joined as (
         select 
-            creditcard.creditcardid as credit_card_id,
-            creditcard.cardtype as card_type,
-            creditcard.expmonth as expiration_month,
-            creditcard.expyear as expiration_year,
-            personcreditcard.businessentityid as business_entity_id
+            creditcard.creditcardid as creditcard_id,
+            creditcard.cardtype as tipo_cartao,
+            creditcard.expmonth as mes_expiracao,
+            creditcard.expyear as ano_expiracao,
+            personcreditcard.businessentityid as entidade_negocio_id
         from 
             creditcard 
         left join  
