@@ -1,0 +1,30 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: tabela contendo informações detalhadas sobre os clientes, incluindo dados de localização, participação em promoções e identificadores globais.
+    columns:
+      - name: cliente_id
+        description: identificador único do cliente.
+      - name: primeiro_nome
+        description: primeiro nome do cliente.
+      - name: nome_do_meio
+        description: nome do meio do cliente.
+      - name: sobrenome
+        description: sobrenome do cliente.
+      - name: loja_id
+        description: identificador único da loja associada ao cliente.
+      - name: territorio_id
+        description: identificador do território de vendas associado ao cliente.
+      - name: cidade
+        description: cidade de residência do cliente.
+      - name: estado
+        description: estado de residência do cliente.
+      - name: pais
+        description: país de residência do cliente.
+      - name: codigo_postal
+        description: código postal da localização do cliente.
+      - name: participa_promocoes_email
+        description: indica se o cliente participa de promoções via email (verdadeiro/falso).
+      - name: identificador_global_cliente
+        description: identificador único global (UUID) associado ao cliente.

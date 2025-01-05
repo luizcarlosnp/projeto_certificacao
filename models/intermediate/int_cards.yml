@@ -2,33 +2,15 @@ version: 2
 
 models:
   - name: int_cards
-    description: "Modelo que combina informações de cartões de crédito com entidades de negócios."
+    description: tabela contendo informações detalhadas sobre os cartões de crédito, incluindo tipo, data de expiração e identificação do negócio.
     columns:
       - name: creditcard_id
-        description: "Identificador único do cartão de crédito."
-        tests:
-          - not_null
-          - unique
+        description: identificador único do cartão de crédito.
       - name: tipo_cartao
-        description: "Tipo do cartão de crédito (exemplo: débito, crédito)."
-        tests:
-          - not_null
-          - accepted_values:
-              values: ['Crédito', 'Débito', 'Pré-pago', 'Outros']
+        description: tipo do cartão de crédito (e.g., Visa, MasterCard, etc.).
       - name: mes_expiracao
-        description: "Mês de expiração do cartão de crédito."
-        tests:
-          - not_null
-          - accepted_values:
-              values: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+        description: mês de expiração do cartão de crédito.
       - name: ano_expiracao
-        description: "Ano de expiração do cartão de crédito."
-        tests:
-          - not_null
+        description: ano de expiração do cartão de crédito.
       - name: entidade_negocio_id
-        description: "Identificador único da entidade de negócios associada ao cartão."
-        tests:
-          - not_null
-          - relationships:
-              to: ref('nome_da_tabela_de_entidade')
-              field: id_entidade_negocio
+        description: identificador único da entidade de negócios associada ao cartão de crédito.

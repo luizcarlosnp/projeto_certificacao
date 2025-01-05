@@ -1,0 +1,54 @@
+version: 2
+
+models:
+  - name: dim_product
+    description: tabela contendo informações detalhadas sobre os produtos, incluindo dados como preço, estoque, categorias e características.
+    columns:
+      - name: produto_id
+        description: identificador único do produto.
+      - name: nome_produto
+        description: nome do produto.
+      - name: numero_produto
+        description: número ou código do produto.
+      - name: fabricado_internamente
+        description: indica se o produto é fabricado internamente (verdadeiro/falso).
+      - name: produto_acabado
+        description: indica se o produto é um produto acabado (verdadeiro/falso).
+      - name: cor_produto
+        description: cor do produto.
+      - name: estoque_seguranca
+        description: quantidade mínima de estoque que deve ser mantida para evitar rupturas de estoque.
+      - name: ponto_reabastecimento
+        description: quantidade de produtos no estoque que dispara o reabastecimento automático.
+      - name: custo_padrao
+        description: custo padrão do produto, utilizado para calcular margem e lucro.
+      - name: preco_venda
+        description: preço de venda do produto.
+      - name: tamanho_produto
+        description: tamanho do produto (se aplicável, como pequeno, médio, grande).
+      - name: unidade_medida_tamanho
+        description: unidade de medida para o tamanho do produto (e.g., cm, m, etc.).
+      - name: unidade_medida_peso
+        description: unidade de medida para o peso do produto (e.g., kg, g, lbs).
+      - name: peso_produto
+        description: peso do produto.
+      - name: dias_fabricacao
+        description: número de dias necessários para fabricar o produto.
+      - name: linha_produto
+        description: linha de produtos à qual o produto pertence (e.g., linha premium, linha básica).
+      - name: classe_produto
+        description: classe do produto (e.g., eletrônicos, roupas).
+      - name: estilo_produto
+        description: estilo do produto (e.g., moderno, clássico).
+      - name: id_subcategoria_produto
+        description: identificador da subcategoria à qual o produto pertence.
+      - name: id_modelo_produto
+        description: identificador do modelo do produto.
+      - name: data_inicio_venda
+        description: data de início da venda do produto.
+      - name: data_fim_venda
+        description: data de término da venda do produto (se aplicável).
+      - name: data_descontinuacao
+        description: data em que o produto foi descontinuado.
+      - name: guid
+        description: identificador único global (uuid) do produto.

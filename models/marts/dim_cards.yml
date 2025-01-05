@@ -1,0 +1,16 @@
+version: 2
+
+models:
+  - name: dim_cards
+    description: tabela contendo informações detalhadas sobre os cartões de crédito, incluindo tipo, data de expiração e identificação do negócio.
+    columns:
+      - name: creditcard_id
+        description: identificador único do cartão de crédito.
+      - name: tipo_cartao
+        description: tipo do cartão de crédito (e.g., Visa, MasterCard, etc.).
+      - name: mes_expiracao
+        description: mês de expiração do cartão de crédito.
+      - name: ano_expiracao
+        description: ano de expiração do cartão de crédito.
+      - name: entidade_negocio_id
+        description: identificador único da entidade de negócios associada ao cartão de crédito.

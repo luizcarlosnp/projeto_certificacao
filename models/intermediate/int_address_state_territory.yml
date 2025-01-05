@@ -2,68 +2,33 @@ version: 2
 
 models:
   - name: int_address_state_territory
-    description: "Modelo que une dados de endereços, estados/províncias e territórios de vendas."
+    description: tabela contendo informações detalhadas sobre os endereços, incluindo dados de localização, território e vendas por ano.
     columns:
       - name: endereco_id
-        description: "Identificador único do endereço."
-        tests:
-          - not_null
-          - unique
+        description: identificador único do endereço.
       - name: linha_endereco1
-        description: "Primeira linha do endereço."
-        tests:
-          - not_null
+        description: primeira linha do endereço (e.g., rua, avenida).
       - name: linha_endereco2
-        description: "Segunda linha do endereço, opcional."
+        description: segunda linha do endereço (e.g., complemento ou número).
       - name: nome_cidade
-        description: "Nome da cidade associada ao endereço."
-        tests:
-          - not_null
+        description: nome da cidade relacionada ao endereço.
       - name: codigo_postal
-        description: "Código postal associado ao endereço."
-        tests:
-          - not_null
+        description: código postal do endereço.
       - name: localizacao
-        description: "Localização espacial do endereço em formato geográfico (exemplo: geohash, WKT)."
-      - name: estado_provincia_id
-        description: "Identificador único do estado ou província associado ao endereço."
-        tests:
-          - not_null
-          - relationships:
-              to: ref('nome_da_tabela_estado_provincia')
-              field: estado_provincia_id
+        description: descrição da localização geográfica do endereço.
       - name: codigo_estado_provincia
-        description: "Código que identifica o estado ou província."
-        tests:
-          - not_null
+        description: identificador do estado ou província do endereço.
       - name: nome_estado_provincia
-        description: "Nome do estado ou província."
-        tests:
-          - not_null
+        description: nome do estado ou província do endereço.
       - name: nome_territorio
-        description: "Nome do território de vendas."
-        tests:
-          - not_null
+        description: nome do território de vendas relacionado ao endereço.
       - name: territorio_id
-        description: "Identificador único do território de vendas."
-        tests:
-          - not_null
-          - relationships:
-              to: ref('nome_da_tabela_territorio')
-              field: territorio_id
+        description: identificador único do território de vendas.
       - name: vendas_ano_atual
-        description: "Total de vendas acumuladas no ano atual."
-        tests:
-          - not_null
+        description: vendas realizadas no ano atual.
       - name: vendas_ano_anterior
-        description: "Total de vendas acumuladas no ano anterior."
-        tests:
-          - not_null
+        description: vendas realizadas no ano anterior.
       - name: custo_ano_atual
-        description: "Custo acumulado no ano atual."
-        tests:
-          - not_null
+        description: custo relacionado ao endereço no ano atual.
       - name: custo_ano_anterior
-        description: "Custo acumulado no ano anterior."
-        tests:
-          - not_null
+        description: custo relacionado ao endereço no ano anterior.

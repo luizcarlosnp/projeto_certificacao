@@ -1,0 +1,34 @@
+version: 2
+
+models:
+  - name: dim_address_state_territory
+    description: tabela contendo informações detalhadas sobre os endereços, incluindo dados de localização, território e vendas por ano.
+    columns:
+      - name: endereco_id
+        description: identificador único do endereço.
+      - name: linha_endereco1
+        description: primeira linha do endereço (e.g., rua, avenida).
+      - name: linha_endereco2
+        description: segunda linha do endereço (e.g., complemento ou número).
+      - name: nome_cidade
+        description: nome da cidade relacionada ao endereço.
+      - name: codigo_postal
+        description: código postal do endereço.
+      - name: localizacao
+        description: descrição da localização geográfica do endereço.
+      - name: codigo_estado_provincia
+        description: identificador do estado ou província do endereço.
+      - name: nome_estado_provincia
+        description: nome do estado ou província do endereço.
+      - name: nome_territorio
+        description: nome do território de vendas relacionado ao endereço.
+      - name: territorio_id
+        description: identificador único do território de vendas.
+      - name: vendas_ano_atual
+        description: vendas realizadas no ano atual.
+      - name: vendas_ano_anterior
+        description: vendas realizadas no ano anterior.
+      - name: custo_ano_atual
+        description: custo relacionado ao endereço no ano atual.
+      - name: custo_ano_anterior
+        description: custo relacionado ao endereço no ano anterior.

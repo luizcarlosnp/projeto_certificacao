@@ -1,9 +1,10 @@
+version: 2
+
 sources:
   - name: adventure_works
     description: Sistema de dados de venda da Adventure Works. Contém dados relacionados a clientes, vendas, produtos e geografia.
     database: FEA24_9
     schema: raw_adventure_works
-    schema_description: Este schema contém tabelas extraídas do sistema principal da Adventure Works, representando dados brutos não processados.
     tables:
       - name: customer
         description: Contém informações sobre os clientes, incluindo detalhes pessoais e comerciais.

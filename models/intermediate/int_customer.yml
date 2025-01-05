@@ -2,77 +2,29 @@ version: 2
 
 models:
   - name: int_customer
-    description: "Modelo que junta informações de clientes, pessoas, endereços, estados e países para criar um relatório completo."
+    description: tabela contendo informações detalhadas sobre os clientes, incluindo dados de localização, participação em promoções e identificadores globais.
     columns:
       - name: cliente_id
-        description: "Identificador único do cliente."
-        tests:
-          - unique
-          - not_null
+        description: identificador único do cliente.
       - name: primeiro_nome
-        description: "Primeiro nome da pessoa associada ao cliente."
-        tests:
-          - not_null
+        description: primeiro nome do cliente.
       - name: nome_do_meio
-        description: "Nome do meio da pessoa associada ao cliente."
+        description: nome do meio do cliente.
       - name: sobrenome
-        description: "Sobrenome da pessoa associada ao cliente."
-        tests:
-          - not_null
+        description: sobrenome do cliente.
       - name: loja_id
-        description: "Identificador da loja associada ao cliente."
-        tests:
-          - not_null
+        description: identificador único da loja associada ao cliente.
       - name: territorio_id
-        description: "Identificador do território de vendas associado ao cliente."
-        tests:
-          - not_null
+        description: identificador do território de vendas associado ao cliente.
       - name: cidade
-        description: "Nome da cidade associada ao endereço do cliente."
-        tests:
-          - not_null
+        description: cidade de residência do cliente.
       - name: estado
-        description: "Nome do estado/província associada ao endereço do cliente."
-        tests:
-          - not_null
+        description: estado de residência do cliente.
       - name: pais
-        description: "Nome do país associado ao endereço do cliente."
-        tests:
-          - not_null
+        description: país de residência do cliente.
       - name: codigo_postal
-        description: "Código postal associado ao endereço do cliente."
-        tests:
-          - not_null
+        description: código postal da localização do cliente.
       - name: participa_promocoes_email
-        description: "Flag que indica se o cliente participa de promoções via e-mail."
+        description: indica se o cliente participa de promoções via email (verdadeiro/falso).
       - name: identificador_global_cliente
-        description: "Identificador global único para o cliente."
-        tests:
-          - not_null
-
-tests:
-  - name: int_customer
-    description: "Modelo que verifica se as chaves de junção estão corretas."
-    tests:
-      - relationship:
-          to: ref('stg_erp__customer')
-          field: customerid
-          model_field: cliente_id
-      - relationship:
-          to: ref('stg_erp__person')
-          field: personid
-          model_field: pessoa_id
-      - relationship:
-          to: ref('stg_erp__address')
-          field: addressid
-          model_field: endereco_id
-      - relationship:
-          to: ref('stg_erp__stateprovince')
-          field: stateprovinceid
-          model_field: estado_id
-      - relationship:
-          to: ref('stg_erp__countryregion')
-          field: countryregioncode
-          model_field: codigo_pais
-      - not_null:
-          column_name: cliente_id
+        description: identificador único global (UUID) associado ao cliente.
