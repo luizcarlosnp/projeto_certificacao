@@ -8,31 +8,393 @@ sources:
     tables:
       - name: customer
         description: Contém informações sobre os clientes, incluindo detalhes pessoais e comerciais.
+        columns:
+          - name: customerid
+            description: "Identificador único do cliente."
+            tests:
+              - unique
+              - not_null
+          - name: personid
+            description: "Identificador da pessoa associada ao cliente."
+          - name: storeid
+            description: "Identificador da loja associada ao cliente."
+          - name: territoryid
+            description: "Identificador do território ao qual o cliente pertence."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: person
-        description: Armazena dados básicos de pessoas, como nome, sobrenome e informações de contato.
+        description: "Tabela de pessoas, contendo informações sobre identidade, tipo de pessoa, e dados de contato."
+        columns:
+          - name: name
+            description: "Nome completo da pessoa."
+          - name: businessentityid
+            description: "Identificador único da entidade de negócios associada à pessoa."
+            tests:
+              - unique
+              - not_null
+          - name: persontype
+            description: "Tipo de pessoa (ex: 'Física' ou 'Jurídica')."
+          - name: namestyle
+            description: "Estilo de nome (ex: formal ou informal)."
+          - name: title
+            description: "Título da pessoa (ex: Dr., Sr., Sra.)."
+          - name: firstname
+            description: "Primeiro nome da pessoa."
+          - name: middlename
+            description: "Nome do meio da pessoa (se houver)."
+          - name: lastname
+            description: "Sobrenome da pessoa."
+          - name: suffix
+            description: "Sufixo do nome da pessoa (ex: Jr., Sr., III)."
+          - name: emailpromotion
+            description: "Indicador de consentimento para promoções por e-mail (True/False)."
+          - name: additionalcontactinfo
+            description: "Informações adicionais de contato da pessoa."
+          - name: demographics
+            description: "Informações demográficas da pessoa (ex: idade, gênero, etc.)."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: salesreason
         description: Define os motivos pelos quais uma venda foi realizada, utilizado em análises de desempenho.
+        columns:
+          - name: name
+            description: "Nome da razão de venda."
+          - name: salesreasonid
+            description: "Identificador único da razão de venda."
+            tests:
+              - unique
+              - not_null
+          - name: reasontype
+            description: "Tipo de razão para a venda (ex: 'Promoção', 'Desconto')."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: salesperson
         description: Detalha os funcionários responsáveis pelas vendas, incluindo metas e resultados alcançados.
+        columns:
+          - name: name
+            description: "Nome completo do vendedor."
+          - name: businessentityid
+            description: "Identificador único da entidade de negócios associada ao vendedor."
+            tests:
+              - unique
+              - not_null
+          - name: territoryid
+            description: "Identificador do território associado ao vendedor."
+          - name: salesquota
+            description: "Quota de vendas atribuída ao vendedor."
+          - name: bonus
+            description: "Bônus recebido pelo vendedor com base em seu desempenho."
+          - name: commissionpct
+            description: "Percentual de comissão do vendedor sobre as vendas realizadas."
+          - name: salesytd
+            description: "Total de vendas realizadas pelo vendedor no ano até a data atual."
+          - name: saleslastyear
+            description: "Total de vendas realizadas pelo vendedor no ano anterior."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: employee
         description: Contém informações gerais sobre os funcionários, incluindo detalhes de cargo e departamento.
+        columns:
+          - name: name
+            description: "Nome completo do empregado."
+          - name: businessentityid
+            description: "Identificador único da entidade de negócios associada ao empregado."
+            tests:
+              - unique
+              - not_null
+          - name: nationalidnumber
+            description: "Número de identificação nacional do empregado."
+          - name: loginid
+            description: "Identificador de login do empregado."
+          - name: jobtitle
+            description: "Cargo ou título do empregado na organização."
+          - name: birthdate
+            description: "Data de nascimento do empregado."
+          - name: maritalstatus
+            description: "Estado civil do empregado."
+          - name: gender
+            description: "Gênero do empregado."
+          - name: hiredate
+            description: "Data de contratação do empregado."
+          - name: salariedflag
+            description: "Indicador se o empregado é assalariado (True/False)."
+          - name: vacationhours
+            description: "Número de horas de férias acumuladas pelo empregado."
+          - name: sickleavehours
+            description: "Número de horas de licença médica acumuladas pelo empregado."
+          - name: currentflag
+            description: "Indicador se o empregado está ativo na empresa (True/False)."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
+          - name: organizationnode
+            description: "Identificador da organização ou departamento ao qual o empregado pertence."
       - name: stateprovince
         description: Representa estados ou províncias, vinculados a endereços e regiões de vendas.
+        columns:
+          - name: stateprovinceid
+            description: "Identificador único do estado ou província."
+            tests:
+              - unique
+              - not_null
+          - name: stateprovincecode
+            description: "Código do estado ou província."
+          - name: countryregioncode
+            description: "Código da região ou país ao qual o estado ou província pertence."
+          - name: isonlystateprovinceflag
+            description: "Indicador se é o único estado ou província na região (True/False)."
+          - name: name
+            description: "Nome do estado ou província."
+          - name: territoryid
+            description: "Identificador do território associado ao estado ou província."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: address
         description: Registra os endereços físicos relacionados a clientes e funcionários.
+        columns:
+          - name: addressid
+            description: "Identificador único do endereço."
+            tests:
+              - unique
+              - not_null
+          - name: addressline1
+            description: "Primeira linha do endereço."
+          - name: addressline2
+            description: "Segunda linha do endereço (opcional)."
+          - name: city
+            description: "Cidade do endereço."
+          - name: stateprovinceid
+            description: "Identificador do estado ou província."
+          - name: postalcode
+            description: "Código postal do endereço."
+          - name: spatiallocation
+            description: "Informação de localização espacial (geográfica)."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: countryregion
         description: Lista os países e regiões, utilizados para análises de vendas e localização.
+        columns:
+          - name: countryregioncode
+            description: "Código único que identifica a região ou país."
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: "Nome da região ou país."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: salesorderheader
         description: Contém informações agregadas de pedidos de vendas, como datas e totais de pedidos.
+        columns:
+          - name: name
+            description: "Nome do cabeçalho do pedido de venda."
+          - name: salesorderid
+            description: "Identificador único do pedido de venda."
+            tests:
+              - unique
+              - not_null
+          - name: revisionnumber
+            description: "Número da revisão do pedido de venda."
+          - name: orderdate
+            description: "Data em que o pedido foi realizado."
+          - name: duedate
+            description: "Data de vencimento do pedido."
+          - name: shipdate
+            description: "Data de envio do pedido."
+          - name: status
+            description: "Status do pedido (ex: 'Pendente', 'Concluído', 'Cancelado')."
+          - name: onlineorderflag
+            description: "Indicador se o pedido foi realizado online (True/False)."
+          - name: purchaseordernumber
+            description: "Número do pedido de compra associado ao pedido de venda."
+          - name: accountnumber
+            description: "Número da conta do cliente associada ao pedido."
+          - name: customerid
+            description: "Identificador único do cliente associado ao pedido."
+          - name: salespersonid
+            description: "Identificador do vendedor responsável pelo pedido."
+          - name: territoryid
+            description: "Identificador do território associado ao pedido."
+          - name: billtoaddressid
+            description: "Identificador do endereço de cobrança associado ao pedido."
+          - name: shiptoaddressid
+            description: "Identificador do endereço de entrega associado ao pedido."
+          - name: shipmethodid
+            description: "Identificador do método de envio utilizado para o pedido."
+          - name: creditcardid
+            description: "Identificador do cartão de crédito utilizado no pedido."
+          - name: creditcardapprovalcode
+            description: "Código de aprovação do cartão de crédito."
+          - name: currencyrateid
+            description: "Identificador da taxa de câmbio usada no pedido."
+          - name: subtotal
+            description: "Subtotal do pedido antes dos impostos e frete."
+          - name: taxamt
+            description: "Valor do imposto aplicado ao pedido."
+          - name: freight
+            description: "Valor do frete cobrado no pedido."
+          - name: totaldue
+            description: "Valor total devido no pedido, incluindo impostos e frete."
+          - name: comment
+            description: "Comentários adicionais sobre o pedido."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: salesorderdetail
         description: Detalha os itens individuais dentro de um pedido de vendas, incluindo quantidades e preços.
+        columns:
+          - name: name
+            description: "Nome do detalhe do pedido de venda."
+          - name: salesorderid
+            description: "Identificador único do pedido de venda."
+          - name: salesorderdetailid
+            description: "Identificador único do detalhe do pedido de venda."            
+          - name: carriertrackingnumber
+            description: "Número de rastreamento do transportador associado ao pedido."
+          - name: orderqty
+            description: "Quantidade de unidades do produto no pedido."
+          - name: productid
+            description: "Identificador do produto associado ao pedido."
+          - name: specialofferid
+            description: "Identificador da oferta especial aplicada ao pedido."
+          - name: unitprice
+            description: "Preço unitário do produto no pedido."
+          - name: unitpricediscount
+            description: "Desconto aplicado ao preço unitário do produto."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: product
         description: Lista todos os produtos disponíveis para venda, incluindo especificações e preços.
+        columns:
+          - name: name
+            description: "Nome do produto."
+          - name: productid
+            description: "Identificador único do produto."
+            tests:
+              - unique
+              - not_null
+          - name: productnumber
+            description: "Número de identificação do produto."
+          - name: makeflag
+            description: "Indicador se o produto é fabricado internamente (True/False)."
+          - name: finishedgoodsflag
+            description: "Indicador se o produto é acabado ou semi-acabado (True/False)."
+          - name: color
+            description: "Cor do produto."
+          - name: safetystocklevel
+            description: "Nível mínimo de estoque de segurança para o produto."
+          - name: reorderpoint
+            description: "Ponto de reabastecimento do produto, abaixo do qual o estoque deve ser reabastecido."
+          - name: standardcost
+            description: "Custo padrão do produto."
+          - name: listprice
+            description: "Preço de venda do produto."
+          - name: size
+            description: "Tamanho do produto."
+          - name: sizeunitmeasurecode
+            description: "Código da unidade de medida do tamanho do produto."
+          - name: weightunitmeasurecode
+            description: "Código da unidade de medida do peso do produto."
+          - name: weight
+            description: "Peso do produto."
+          - name: daystomanufacture
+            description: "Número de dias necessários para fabricar o produto."
+          - name: productline
+            description: "Linha de produto à qual o item pertence."
+          - name: class
+            description: "Classe do produto (ex: A, B, C)."
+          - name: style
+            description: "Estilo ou modelo do produto."
+          - name: productsubcategoryid
+            description: "Identificador da subcategoria do produto."
+          - name: productmodelid
+            description: "Identificador do modelo do produto."
+          - name: sellstartdate
+            description: "Data de início das vendas do produto."
+          - name: sellenddate
+            description: "Data de término das vendas do produto."
+          - name: discontinueddate
+            description: "Data de descontinuação do produto."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro."
       - name: salesorderheadersalesreason
         description: Relaciona pedidos de vendas com os motivos associados às vendas.
+        columns:
+          - name: SALESORDERID
+            description: Identificador único do pedido de vendas.       
+          - name: SALESREASONID
+            description: Identificador único da razão de vendas associada ao pedido.          
+          - name: MODIFIEDDATE
+            description: Data e hora em que o registro foi modificado pela última vez.
       - name: salesterritory
         description: Define territórios de vendas, incluindo informações geográficas e metas regionais.
+        columns:
+          - name: territoryid
+            description: "Identificador único do território de vendas."
+            tests:
+              - unique
+              - not_null
+          - name: name
+            description: "Nome do território de vendas."
+          - name: countryregioncode
+            description: "Código da região ou país associado ao território de vendas."
+          - name: group
+            description: "Grupo ou categoria do território de vendas (por exemplo, Norte, Sul, etc.)."
+          - name: salesytd
+            description: "Valor total de vendas até o momento no ano (Year-To-Date)."
+          - name: saleslastyear
+            description: "Valor total de vendas do território de vendas no ano passado."
+          - name: costytd
+            description: "Custo total até o momento no ano (Year-To-Date) relacionado ao território de vendas."
+          - name: costlastyear
+            description: "Custo total do território de vendas no ano passado."
+          - name: rowguid
+            description: "Identificador global único para controle de registro."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro do território de vendas."
       - name: creditcard
         description: Contém detalhes dos cartões de crédito utilizados pelos clientes para pagamentos.
+        columns:
+          - name: creditcardid
+            description: "Identificador único do cartão de crédito."
+            tests:
+              - unique
+              - not_null
+          - name: cardtype
+            description: "Tipo do cartão de crédito (por exemplo, Visa, MasterCard, etc.)."
+          - name: cardnumber
+            description: "Número do cartão de crédito."
+          - name: expmonth
+            description: "Mês de expiração do cartão de crédito (formato MM)."
+          - name: expyear
+            description: "Ano de expiração do cartão de crédito (formato AAAA)."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro do cartão de crédito."
       - name: personcreditcard
         description: Faz a associação entre pessoas e os cartões de crédito registrados.
+        columns:
+          - name: businessentityid
+            description: "Identificador único da entidade de negócios (por exemplo, uma pessoa ou empresa)."
+            tests:
+              - unique
+              - not_null
+          - name: creditcardid
+            description: "Identificador do cartão de crédito relacionado à entidade de negócios."
+          - name: modifieddate
+            description: "Data e hora da última modificação no registro do cartão de crédito da entidade de negócios."
