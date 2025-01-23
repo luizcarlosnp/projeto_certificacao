@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_erp__personcreditcard
+    description: "Faz a associação entre pessoas e os cartões de crédito registrados."
+    columns:
+      - name: business_entity_id
+        description: "Identificador único da entidade de negócios (por exemplo, uma pessoa ou empresa)."
+        tests:
+          - unique
+          - not_null
+      - name: credit_card_id
+        description: "Identificador do cartão de crédito relacionado à entidade de negócios."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro do cartão de crédito da entidade de negócios."

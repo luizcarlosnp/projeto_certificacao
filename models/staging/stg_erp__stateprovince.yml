@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_erp__stateprovince
+    description: "Representa estados ou províncias, vinculados a endereços e regiões de vendas."
+    columns:
+      - name: state_province_id
+        description: "Identificador único do estado ou província."
+        tests:
+          - unique
+          - not_null
+      - name: state_province_code
+        description: "Código do estado ou província."
+      - name: country_region_code
+        description: "Código da região ou país ao qual o estado ou província pertence."
+      - name: is_only_state_province_flag
+        description: "Indicador se é o único estado ou província na região (True/False)."
+      - name: state_province_name
+        description: "Nome do estado ou província."
+      - name: territory_id
+        description: "Identificador do território associado ao estado ou província."
+      - name: row_guid
+        description: "Identificador global único para controle de registro."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro."

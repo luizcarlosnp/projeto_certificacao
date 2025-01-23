@@ -9,11 +9,11 @@ with
     ), 
     joined as (
         select 
-            creditcard.creditcardid as creditcard_id,
-            creditcard.cardtype as tipo_cartao,
-            creditcard.expmonth as mes_expiracao,
-            creditcard.expyear as ano_expiracao,
-            personcreditcard.businessentityid as entidade_negocio_id
+            creditcard.creditcard_id
+            creditcard.card_type,
+            creditcard.exp_month,
+            creditcard.exp_year,
+            personcreditcard.business_entity_id
         from 
             creditcard 
         left join  

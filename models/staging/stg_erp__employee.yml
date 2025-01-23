@@ -1,0 +1,39 @@
+version: 2
+
+models:
+  - name: stg_erp__employee
+    description: "Contém informações gerais sobre os funcionários, incluindo detalhes de cargo e departamento."
+    columns:
+      - name: business_entity_id
+        description: "Identificador único da entidade de negócios associada ao empregado."
+        tests:
+          - unique
+          - not_null
+      - name: national_id_number
+        description: "Número de identificação nacional do empregado."
+      - name: login_id
+        description: "Identificador de login do empregado."
+      - name: job_title
+        description: "Cargo ou título do empregado na organização."
+      - name: birth_date
+        description: "Data de nascimento do empregado."
+      - name: marital_status
+        description: "Estado civil do empregado."
+      - name: gender
+        description: "Gênero do empregado."
+      - name: hire_date
+        description: "Data de contratação do empregado."
+      - name: salaried_flag
+        description: "Indicador se o empregado é assalariado (True/False)."
+      - name: vacation_hours
+        description: "Número de horas de férias acumuladas pelo empregado."
+      - name: sick_leave_hours
+        description: "Número de horas de licença médica acumuladas pelo empregado."
+      - name: current_flag
+        description: "Indicador se o empregado está ativo na empresa (True/False)."
+      - name: row_guid
+        description: "Identificador global único para controle de registro."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro."
+      - name: organization_node
+        description: "Identificador da organização ou departamento ao qual o empregado pertence."

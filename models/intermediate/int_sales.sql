@@ -9,11 +9,11 @@ details as (
 ),
 addresses as (
     select
-        addressid,
+        address_id,
         city,
-        stateprovinceid,
-        postalcode,
-        modifieddate
+        state_province_id,
+        postal_code,
+        modified_date
     from
         {{ ref('stg_erp__address') }}
 ),
@@ -25,78 +25,78 @@ salesreason as (
 ),
 joined as (
     select
-        header.salesorderid as pedido_id,
-        cast(header.orderdate as date) as data_pedido,
-        header.customerid as cliente_id,
-        header.territoryid as territorio_id,
-        header.billtoaddressid as endereco_cobranca_id,
-        header.shiptoaddressid as endereco_entrega_id,
-        header.shipmethodid as metodo_envio_id,
-        header.subtotal as valor_subtotal,
-        header.taxamt as valor_imposto,
-        header.freight as valor_frete,
-        header.comment as comentario,
+        header.sales_order_id,
+        cast(header.order_date as date) as order_date,
+        header.customer_id,
+        header.territory_id,
+        header.bill_to_address_id,
+        header.ship_to_address_id,
+        header.ship_method_id,
+        header.subtotal,
+        header.tax_amount,
+        header.freight,
+        header.comment,
         header.status,
-        header.creditcardid as creditcard_id,
-        details.salesorderdetailid as detalhe_pedido_id,
-        details.productid as produto_id,
-        details.specialofferid as oferta_especial_id,
-        details.orderqty as quantidade_pedido,
-        details.unitprice as preco_unitario,
-        details.unitpricediscount as desconto_unitario,
-        addresses.city as cidade_entrega,
-        addresses.stateprovinceid as estado_provincia_id,
-        addresses.postalcode as codigo_postal_entrega,
-        salesreason.reasontype as tipo_razao
+        header.credit_card_id,
+        details.sales_order_detail_id,
+        details.product_id,
+        details.special_offer_id,
+        details.order_quantity,
+        details.unit_price,
+        details.unit_price_discount,
+        addresses.city,
+        addresses.state_province_id,
+        addresses.postal_code,
+        salesreason.reason_type
     from
         header
     inner join
         details
     on
-        header.salesorderid = details.salesorderid
+        header.sales_order_id = details.sales_order_id
     left join
         addresses
     on
-        header.shiptoaddressid = addresses.addressid
+        header.ship_to_address_id = addresses.address_id
     left join 
         salesorderheadersalesreason
     on
-        header.salesorderid = salesorderheadersalesreason.salesorderid
+        header.sales_order_id = salesorderheadersalesreason.sales_order_id
     left join
         salesreason
     on
-        salesorderheadersalesreason.salesreasonid = salesreason.salesreasonid
+        salesorderheadersalesreason.sales_reason_id = salesreason.sales_reason_id
 ),
 metrics as (
     select 
-        pedido_id,
-        data_pedido,
-        extract(year from data_pedido) as ano,
-        extract(month from data_pedido) as mes,
-        cliente_id,
-        territorio_id,
-        endereco_cobranca_id,
-        endereco_entrega_id,
-        metodo_envio_id,
-        valor_subtotal,
-        valor_imposto,
-        valor_frete,
-        comentario,
+        sales_order_id as order_id,
+        order_date,
+        extract(year from order_date) as year,
+        extract(month from order_date) as month,
+        customer_id,
+        territory_id,
+        bill_to_address_id as billing_address_id,
+        ship_to_address_id as shipping_address_id,
+        ship_method_id as shipping_method_id,
+        subtotal,
+        tax_amount,
+        freight,
+        comment,
         status,
-        creditcard_id,
-        detalhe_pedido_id,
-        produto_id,
-        oferta_especial_id,
-        quantidade_pedido,
-        preco_unitario,
-        desconto_unitario,
-        quantidade_pedido * preco_unitario as valor_total_negociado,
-        quantidade_pedido * preco_unitario as faturamento_bruto,
-        quantidade_pedido * desconto_unitario as total_desconto,
-        cidade_entrega,
-        estado_provincia_id,
-        codigo_postal_entrega,
-        tipo_razao
+        credit_card_id,
+        sales_order_detail_id as order_detail_id,
+        product_id,
+        special_offer_id,
+        order_quantity,
+        unit_price,
+        unit_price_discount as unit_discount,
+        order_quantity * unit_price as total_deal_value,
+        order_quantity * unit_price as gross_revenue,
+        order_quantity * unit_price_discount as total_discount,
+        city as shipping_city,
+        state_province_id as shipping_state_province_id,
+        postal_code as shipping_postal_code,
+        reason_type
     from joined
 )
 select * from metrics

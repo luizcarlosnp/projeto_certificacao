@@ -1,0 +1,12 @@
+version: 2
+
+models:
+  - name: stg_erp__salesorderheadersalesreason
+    description: "Relaciona pedidos de vendas com os motivos associados às vendas."
+    columns:
+      - name: sales_order_id
+        description: "Identificador único do pedido de vendas."
+      - name: sales_reason_id
+        description: "Identificador único da razão de vendas associada ao pedido."
+      - name: modified_date
+        description: "Data e hora em que o registro foi modificado pela última vez."

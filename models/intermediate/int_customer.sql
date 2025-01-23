@@ -1,74 +1,65 @@
 {{ config(materialized='table') }}
 
-with 
--- Tabela base de clientes
-customers as (
+with address as (
     select
-        customerid as cliente_id,
-        personid as pessoa_id,
-        storeid as loja_id,
-        territoryid as territorio_id,
-        rowguid as identificador_global_cliente
-    from {{ ref('stg_erp__customer') }}
-),
--- Informações de pessoas associadas aos clientes
-persons as (
-    select
-        businessentityid as pessoa_id,
-        firstname as primeiro_nome,
-        middlename as nome_do_meio,
-        lastname as sobrenome,
-        emailpromotion as participa_promocoes_email
-    from {{ ref('stg_erp__person') }}
-),
--- Informações de endereço
-addresses as (
-    select
-        addressid as endereco_id,
-        city as cidade,
-        stateprovinceid as estado_id,
-        postalcode as codigo_postal
+        address_id,
+        address_line_1,
+        address_line_2,
+        city,
+        state_province_id,
+        postal_code,
+        spatial_location,
+        row_guid
     from {{ ref('stg_erp__address') }}
 ),
--- Informações sobre estados ou províncias
-state_provinces as (
+stateprovince as (
     select
-        stateprovinceid as estado_id,
-        name as estado_nome,
-        countryregioncode as codigo_pais
+        state_province_id,
+        state_province_code,
+        country_region_code,
+        is_only_state_province_flag,
+        state_province_name,
+        territory_id,
+        row_guid
     from {{ ref('stg_erp__stateprovince') }}
 ),
--- Informações sobre regiões e países
-countries as (
+salesterritory as (
     select
-        countryregioncode as codigo_pais,
-        name as pais_nome
-    from {{ ref('stg_erp__countryregion') }}
+        territory_id,
+        territory_name,
+        country_region_code,
+        sales_ytd,
+        sales_last_year,
+        cost_ytd,
+        cost_last_year,
+        row_guid
+    from {{ ref('stg_erp__salesterritory') }}
 ),
--- Junta todas as informações para criar tabela intermediaria de clientes
 joined as (
     select
-        customers.cliente_id,
-        persons.primeiro_nome,
-        persons.nome_do_meio,
-        persons.sobrenome,
-        customers.loja_id,
-        customers.territorio_id,
-        addresses.cidade,
-        state_provinces.estado_nome as estado,
-        countries.pais_nome as pais,
-        addresses.codigo_postal,
-        persons.participa_promocoes_email,
-        customers.identificador_global_cliente
-    from 
-        customers
-    left join 
-        persons on customers.pessoa_id = persons.pessoa_id
-    left join 
-        addresses on customers.cliente_id = addresses.endereco_id
-    left join 
-        state_provinces on addresses.estado_id = state_provinces.estado_id
-    left join 
-        countries on state_provinces.codigo_pais = countries.codigo_pais
+        address.address_id,
+        address.address_line_1,
+        address.address_line_2,
+        address.city,
+        address.postal_code,
+        address.spatial_location,
+        stateprovince.state_province_code,
+        stateprovince.state_province_name,
+        salesterritory.territory_name,
+        salesterritory.territory_id,
+        salesterritory.sales_ytd,
+        salesterritory.sales_last_year,
+        salesterritory.cost_ytd,
+        salesterritory.cost_last_year
+    from address
+    inner join 
+        stateprovince
+    on 
+        address.state_province_id = stateprovince.state_province_id
+    inner join 
+        salesterritory
+    on 
+        stateprovince.territory_id = salesterritory.territory_id
 )
+
 select * from joined

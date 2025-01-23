@@ -1,0 +1,21 @@
+version: 2
+
+models:
+  - name: stg_erp__creditcard
+    description: "Contém detalhes dos cartões de crédito utilizados pelos clientes para pagamentos."
+    columns:
+      - name: credit_card_id
+        description: "Identificador único do cartão de crédito."
+        tests:
+          - unique
+          - not_null
+      - name: card_type
+        description: "Tipo do cartão de crédito (por exemplo, Visa, MasterCard, etc.)."
+      - name: card_number
+        description: "Número do cartão de crédito."
+      - name: exp_month
+        description: "Mês de expiração do cartão de crédito (formato MM)."
+      - name: exp_year
+        description: "Ano de expiração do cartão de crédito (formato AAAA)."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro do cartão de crédito."

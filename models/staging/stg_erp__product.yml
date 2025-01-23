@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: stg_erp__product
+    description: "Lista todos os produtos disponíveis para venda, incluindo especificações e preços."
+    columns:
+      - name: name
+        description: "Nome do produto."
+      - name: product_id
+        description: "Identificador único do produto."
+        tests:
+          - unique
+          - not_null
+      - name: product_number
+        description: "Número de identificação do produto."
+      - name: make_flag
+        description: "Indicador se o produto é fabricado internamente (True/False)."
+      - name: finished_goods_flag
+        description: "Indicador se o produto é acabado ou semi-acabado (True/False)."
+      - name: color
+        description: "Cor do produto."
+      - name: safety_stock_level
+        description: "Nível mínimo de estoque de segurança para o produto."
+      - name: reorder_point
+        description: "Ponto de reabastecimento do produto, abaixo do qual o estoque deve ser reabastecido."
+      - name: standard_cost
+        description: "Custo padrão do produto."
+      - name: list_price
+        description: "Preço de venda do produto."
+      - name: size
+        description: "Tamanho do produto."
+      - name: size_unit_measure_code
+        description: "Código da unidade de medida do tamanho do produto."
+      - name: weight_unit_measure_code
+        description: "Código da unidade de medida do peso do produto."
+      - name: weight
+        description: "Peso do produto."
+      - name: days_to_manufacture
+        description: "Número de dias necessários para fabricar o produto."
+      - name: product_line
+        description: "Linha de produto à qual o item pertence."
+      - name: class
+        description: "Classe do produto (ex: A, B, C)."
+      - name: style
+        description: "Estilo ou modelo do produto."
+      - name: product_subcategory_id
+        description: "Identificador da subcategoria do produto."
+      - name: product_model_id
+        description: "Identificador do modelo do produto."
+      - name: sell_start_date
+        description: "Data de início das vendas do produto."
+      - name: sell_end_date
+        description: "Data de término das vendas do produto."
+      - name: discontinued_date
+        description: "Data de descontinuação do produto."
+      - name: row_guid
+        description: "Identificador global único para controle de registro."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro."

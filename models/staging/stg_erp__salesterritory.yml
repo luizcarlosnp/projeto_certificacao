@@ -1,0 +1,27 @@
+version: 2
+
+models:
+  - name: stg_erp__salesterritory
+    description: "Define territórios de vendas, incluindo informações geográficas e metas regionais."
+    columns:
+      - name: territory_id
+        description: "Identificador único do território de vendas."
+        tests:
+          - unique
+          - not_null
+      - name: territory_name
+        description: "Nome do território de vendas."
+      - name: country_region_code
+        description: "Código da região ou país associado ao território de vendas."
+      - name: sales_ytd
+        description: "Valor total de vendas até o momento no ano (Year-To-Date)."
+      - name: sales_last_year
+        description: "Valor total de vendas do território de vendas no ano passado."
+      - name: cost_ytd
+        description: "Custo total até o momento no ano (Year-To-Date) relacionado ao território de vendas."
+      - name: cost_last_year
+        description: "Custo total do território de vendas no ano passado."
+      - name: row_guid
+        description: "Identificador global único para controle de registro."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro do território de vendas."

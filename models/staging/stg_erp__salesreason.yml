@@ -1,0 +1,17 @@
+version: 2
+
+models:
+  - name: stg_erp__salesreason
+    description: "Define os motivos pelos quais uma venda foi realizada, utilizado em análises de desempenho."
+    columns:
+      - name: name
+        description: "Nome da razão de venda."
+      - name: sales_reason_id
+        description: "Identificador único da razão de venda."
+        tests:
+          - unique
+          - not_null
+      - name: reason_type
+        description: "Tipo de razão para a venda (ex: 'Promoção', 'Desconto')."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro."

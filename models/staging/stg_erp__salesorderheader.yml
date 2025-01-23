@@ -1,0 +1,59 @@
+version: 2
+
+models:
+  - name: stg_erp__salesorderheader
+    description: "Contém informações agregadas de pedidos de vendas, como datas e totais de pedidos."
+    columns:
+      - name: sales_order_id
+        description: "Identificador único do pedido de venda."
+        tests:
+          - unique
+          - not_null
+      - name: revision_number
+        description: "Número da revisão do pedido de venda."
+      - name: order_date
+        description: "Data em que o pedido foi realizado."
+      - name: due_date
+        description: "Data de vencimento do pedido."
+      - name: ship_date
+        description: "Data de envio do pedido."
+      - name: status
+        description: "Status do pedido (ex: 'Pendente', 'Concluído', 'Cancelado')."
+      - name: online_order_flag
+        description: "Indicador se o pedido foi realizado online (True/False)."
+      - name: purchase_order_number
+        description: "Número do pedido de compra associado ao pedido de venda."
+      - name: account_number
+        description: "Número da conta do cliente associada ao pedido."
+      - name: customer_id
+        description: "Identificador único do cliente associado ao pedido."
+      - name: salesperson_id
+        description: "Identificador do vendedor responsável pelo pedido."
+      - name: territory_id
+        description: "Identificador do território associado ao pedido."
+      - name: bill_to_address_id
+        description: "Identificador do endereço de cobrança associado ao pedido."
+      - name: ship_to_address_id
+        description: "Identificador do endereço de entrega associado ao pedido."
+      - name: ship_method_id
+        description: "Identificador do método de envio utilizado para o pedido."
+      - name: credit_card_id
+        description: "Identificador do cartão de crédito utilizado no pedido."
+      - name: credit_card_approval_code
+        description: "Código de aprovação do cartão de crédito."
+      - name: currency_rate_id
+        description: "Identificador da taxa de câmbio usada no pedido."
+      - name: subtotal
+        description: "Subtotal do pedido antes dos impostos e frete."
+      - name: tax_amt
+        description: "Valor do imposto aplicado ao pedido."
+      - name: freight
+        description: "Valor do frete cobrado no pedido."
+      - name: total_due
+        description: "Valor total devido no pedido, incluindo impostos e frete."
+      - name: comment
+        description: "Comentários adicionais sobre o pedido."
+      - name: row_guid
+        description: "Identificador global único para controle de registro."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro."

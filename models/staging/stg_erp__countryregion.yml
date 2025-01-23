@@ -1,0 +1,15 @@
+version: 2
+
+models:
+  - name: stg_erp__countryregion
+    description: "Lista os países e regiões, utilizados para análises de vendas e localização."
+    columns:
+      - name: country_region_code
+        description: "Código único que identifica a região ou país."
+        tests:
+          - unique
+          - not_null
+      - name: name
+        description: "Nome da região ou país."
+      - name: modified_date
+        description: "Data e hora da última modificação no registro."
