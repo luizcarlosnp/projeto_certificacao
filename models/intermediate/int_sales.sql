@@ -24,7 +24,7 @@ salesreason as (
     select * from {{ ref('stg_erp__salesreason') }}    
 ),
 joined as (
-    select
+    select 
         header.sales_order_id,
         cast(header.order_date as date) as order_date,
         header.customer_id,
@@ -68,7 +68,7 @@ joined as (
         salesorderheadersalesreason.sales_reason_id = salesreason.sales_reason_id
 ),
 metrics as (
-    select 
+    select distinct
         sales_order_id as order_id,
         order_date,
         extract(year from order_date) as year,

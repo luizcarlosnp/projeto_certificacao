@@ -2,29 +2,37 @@ version: 2
 
 models:
   - name: int_customer
-    description: tabela contendo informações detalhadas sobre os clientes, incluindo dados de localização, participação em promoções e identificadores globais.
+    description: >
+      Uma tabela que combina detalhes de endereço, informações de estado/província e dados de território de vendas. 
+      Esta tabela é materializada como uma tabela física e junta dados das tabelas de estágio `stg_erp__address`,
+      `stg_erp__stateprovince` e `stg_erp__salesterritory`.
     columns:
-      - name: cliente_id
-        description: identificador único do cliente.
-      - name: primeiro_nome
-        description: primeiro nome do cliente.
-      - name: nome_do_meio
-        description: nome do meio do cliente.
-      - name: sobrenome
-        description: sobrenome do cliente.
-      - name: loja_id
-        description: identificador único da loja associada ao cliente.
-      - name: territorio_id
-        description: identificador do território de vendas associado ao cliente.
-      - name: cidade
-        description: cidade de residência do cliente.
-      - name: estado
-        description: estado de residência do cliente.
-      - name: pais
-        description: país de residência do cliente.
-      - name: codigo_postal
-        description: código postal da localização do cliente.
-      - name: participa_promocoes_email
-        description: indica se o cliente participa de promoções via email (verdadeiro/falso).
-      - name: identificador_global_cliente
-        description: identificador único global (UUID) associado ao cliente.
+      - name: address_id
+        description: Identificador único para o endereço.
+      - name: address_line_1
+        description: Linha principal do endereço.
+      - name: address_line_2
+        description: Linha secundária do endereço (se disponível).
+      - name: city
+        description: Nome da cidade do endereço.
+      - name: postal_code
+        description: Código postal do endereço.
+      - name: spatial_location
+        description: Dados espaciais associados ao endereço.
+      - name: state_province_code
+        description: Código que representa o estado ou província.
+      - name: state_province_name
+        description: Nome completo do estado ou província.
+      - name: territory_name
+        description: Nome do território de vendas associado ao estado ou província.
+      - name: territory_id
+        description: Identificador único do território de vendas.
+      - name: sales_ytd
+        description: Vendas acumuladas no ano para o território.
+      - name: sales_last_year
+        description: Vendas do território no ano anterior.
+      - name: cost_ytd
+        description: Custo acumulado no ano para o território.
+      - name: cost_last_year
+        description: Custo do território no ano anterior.
+        

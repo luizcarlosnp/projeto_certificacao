@@ -1,16 +1,19 @@
 version: 2
 
 models:
-  - name: int_cards
-    description: tabela contendo informações detalhadas sobre os cartões de crédito, incluindo tipo, data de expiração e identificação do negócio.
+  - name: int_card
+    description: >
+      Uma tabela que combina informações de cartões de crédito e seus respectivos donos. 
+      Esta tabela é materializada como uma tabela física e junta dados das tabelas de estágio `stg_erp__creditcard` e
+      `stg_erp__personcreditcard`.
     columns:
-      - name: creditcard_id
-        description: identificador único do cartão de crédito.
-      - name: tipo_cartao
-        description: tipo do cartão de crédito (e.g., Visa, MasterCard, etc.).
-      - name: mes_expiracao
-        description: mês de expiração do cartão de crédito.
-      - name: ano_expiracao
-        description: ano de expiração do cartão de crédito.
-      - name: entidade_negocio_id
-        description: identificador único da entidade de negócios associada ao cartão de crédito.
+      - name: credit_card_id
+        description: Identificador único para o cartão de crédito.
+      - name: card_type
+        description: Tipo do cartão de crédito
+      - name: exp_month
+        description: Mês de expiração do cartão de crédito.
+      - name: exp_year
+        description: Ano de expiração do cartão de crédito.
+      - name: business_entity_id
+        description: Identificador único para a entidade empresarial associada ao cartão de crédito.

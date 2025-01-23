@@ -2,53 +2,57 @@ version: 2
 
 models:
   - name: dim_product
-    description: tabela contendo informações detalhadas sobre os produtos, incluindo dados como preço, estoque, categorias e características.
+    description: >
+      Uma tabela que contém detalhes sobre os produtos, incluindo informações gerais, medidas e datas relevantes. 
+      Esta tabela é materializada como uma tabela física e utiliza os dados da tabela de estágio `stg_erp__product`.
     columns:
-      - name: produto_id
-        description: identificador único do produto.
-      - name: nome_produto
-        description: nome do produto.
-      - name: numero_produto
-        description: número ou código do produto.
-      - name: fabricado_internamente
-        description: indica se o produto é fabricado internamente (verdadeiro/falso).
-      - name: produto_acabado
-        description: indica se o produto é um produto acabado (verdadeiro/falso).
-      - name: cor_produto
-        description: cor do produto.
-      - name: estoque_seguranca
-        description: quantidade mínima de estoque que deve ser mantida para evitar rupturas de estoque.
-      - name: ponto_reabastecimento
-        description: quantidade de produtos no estoque que dispara o reabastecimento automático.
-      - name: custo_padrao
-        description: custo padrão do produto, utilizado para calcular margem e lucro.
-      - name: preco_venda
-        description: preço de venda do produto.
-      - name: tamanho_produto
-        description: tamanho do produto (se aplicável, como pequeno, médio, grande).
-      - name: unidade_medida_tamanho
-        description: unidade de medida para o tamanho do produto (e.g., cm, m, etc.).
-      - name: unidade_medida_peso
-        description: unidade de medida para o peso do produto (e.g., kg, g, lbs).
-      - name: peso_produto
-        description: peso do produto.
-      - name: dias_fabricacao
-        description: número de dias necessários para fabricar o produto.
-      - name: linha_produto
-        description: linha de produtos à qual o produto pertence (e.g., linha premium, linha básica).
-      - name: classe_produto
-        description: classe do produto (e.g., eletrônicos, roupas).
-      - name: estilo_produto
-        description: estilo do produto (e.g., moderno, clássico).
-      - name: id_subcategoria_produto
-        description: identificador da subcategoria à qual o produto pertence.
-      - name: id_modelo_produto
-        description: identificador do modelo do produto.
-      - name: data_inicio_venda
-        description: data de início da venda do produto.
-      - name: data_fim_venda
-        description: data de término da venda do produto (se aplicável).
-      - name: data_descontinuacao
-        description: data em que o produto foi descontinuado.
-      - name: guid
-        description: identificador único global (uuid) do produto.
+      - name: product_name
+        description: Nome do produto.
+      - name: product_id
+        description: Identificador único para o produto.
+      - name: product_number
+        description: Número de identificação do produto.
+      - name: make_flag
+        description: Indicador se o produto é fabricado internamente.
+      - name: finished_goods_flag
+        description: Indicador se o produto é um bem acabado.
+      - name: color
+        description: Cor do produto.
+      - name: safety_stock_level
+        description: Nível de estoque de segurança para o produto.
+      - name: reorder_point
+        description: Ponto de reabastecimento para o produto.
+      - name: standard_cost
+        description: Custo padrão do produto.
+      - name: list_price
+        description: Preço de lista do produto.
+      - name: size
+        description: Tamanho do produto.
+      - name: size_unit_measure_code
+        description: Código da unidade de medida para o tamanho do produto.
+      - name: weight_unit_measure_code
+        description: Código da unidade de medida para o peso do produto.
+      - name: weight
+        description: Peso do produto.
+      - name: days_to_manufacture
+        description: Dias necessários para fabricar o produto.
+      - name: product_line
+        description: Linha de produto à qual este pertence.
+      - name: class
+        description: Classe do produto.
+      - name: style
+        description: Estilo do produto.
+      - name: product_subcategory_id
+        description: Identificador único da subcategoria do produto.
+      - name: product_model_id
+        description: Identificador único do modelo do produto.
+      - name: sell_start_date
+        description: Data de início das vendas do produto.
+      - name: sell_end_date
+        description: Data de fim das vendas do produto.
+      - name: discontinued_date
+        description: Data em que o produto foi descontinuado.
+      - name: row_guid
+        description: GUID da linha do produto.
+      - name: modified_date
+        description: Data da última modificação no registro do produto.

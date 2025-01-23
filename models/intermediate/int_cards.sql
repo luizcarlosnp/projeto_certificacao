@@ -9,7 +9,7 @@ with
     ), 
     joined as (
         select 
-            creditcard.creditcard_id
+            creditcard.credit_card_id,
             creditcard.card_type,
             creditcard.exp_month,
             creditcard.exp_year,
@@ -19,6 +19,6 @@ with
         left join  
             personcreditcard
         on 
-            creditcard.creditcardid = personcreditcard.creditcardid
+            creditcard.credit_card_id = personcreditcard.credit_card_id
     )
     select * from joined
